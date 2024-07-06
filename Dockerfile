@@ -1,16 +1,19 @@
-FROM openjdk:17
+FROM eclipse-temurin:17
 
 LABEL APP="book-info" owner="Sonu Prasad" owner="sonu.prasad@gmail.com"
 
 WORKDIR /app
 
-RUN sudo apt update && sudo apt upgrade -y
-RUN sudo apt install maven
+COPY .mvn .mvn
+
+COPY ./mvnw ./mvnw
+
+COPY mvnw.cmd mvnw.cmd
 
 COPY pom.xml pom.xml
 
 COPY . .
 
-RUN mvn clean install package
+RUN ./mvnw clean install package -DskipTests
 
 ENTRYPOINT ["java","-jar","book-info-1.0-SNAPSHOT.jar"]
