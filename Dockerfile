@@ -13,4 +13,4 @@ COPY . .
 
 RUN mvn clean install package
 
-ENTRYPONT["java","-jar","book-info-1.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","book-info-1.0-SNAPSHOT.jar"]
