@@ -16,4 +16,4 @@ COPY . .
 
 RUN ./mvnw clean install package -DskipTests
 
-ENTRYPOINT ["java","-jar","book-info-1.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","target/book-info-1.0-SNAPSHOT.jar"]
